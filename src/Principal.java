@@ -5,17 +5,23 @@ public class Principal {
     public static int numVehiculos = 0;
 
     public static void main(String[] args) {
-        CocheGasolina cg = new CocheGasolina("Toyota", "Corolla", TipoCombustible.Gasolina, 5, false, 4.8);
-        CocheElectrico ce = new CocheElectrico("Tesla", "Model 3", TipoCombustible.Electrico, 5, true, 14.5);
-        Camion c = new Camion("Volvo", "FH16", TipoCombustible.Diesel, 3, false);
-        Motocicleta m = new Motocicleta("Honda", "CBR 500R", TipoCombustible.Gasolina, 2, true, 3.5);
-        Autobus a = new Autobus("Mercedes-Benz", "Citaro", TipoCombustible.Diesel, 50, false);
 
-        addVehiculo(cg);
-        addVehiculo(ce);
-        addVehiculo(c);
-        addVehiculo(m);
-        addVehiculo(a);
+        try {
+            CocheGasolina cg = new CocheGasolina("Toyota", "Corolla", TipoCombustible.Gasolina, 5, false, 4.8);
+            CocheElectrico ce = new CocheElectrico("Tesla", "Model 3", TipoCombustible.Electrico, 5, true, 14.5);
+            Camion c = new Camion("Volvo", "FH16", TipoCombustible.Diesel, 3, false);
+            Motocicleta m = new Motocicleta("Honda", "CBR 500R", TipoCombustible.Gasolina, 2, true, 3.5);
+            Autobus a = new Autobus("Mercedes-Benz", "Citaro", TipoCombustible.Diesel, 50, false);
+
+            addVehiculo(cg);
+            addVehiculo(ce);
+            addVehiculo(c);
+            addVehiculo(m);
+            addVehiculo(a);
+
+        } catch (VehiculoException e) {
+            System.out.println(e.getMessage());
+        }
 
         System.out.println();
         System.out.println("=== REVISAR Y ARRANCAR VEHÍCULOS ===");
@@ -45,9 +51,7 @@ public class Principal {
             if (vehiculo != null) {
                if (vehiculo instanceof Economico) {
                    System.out.println(vehiculo.toString());
-               }else if (vehiculo instanceof Recargables) {
-                   
-               }else {
+               } else {
                    System.out.println(vehiculo.getMarca() + " " + vehiculo.getModelo() + " no es un vehiculo economico");
                }
             }
